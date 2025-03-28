@@ -13,8 +13,6 @@ venv/
 ENV/
 
 # Results and generated data
-results/
-*.png
 *.jpg
 *.jpeg
 *.gif
