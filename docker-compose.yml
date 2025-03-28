@@ -1,0 +1,32 @@
+services:
+  mysql:
+    image: mysql:8.0
+    container_name: mysql-benchmark
+    environment:
+      MYSQL_ROOT_PASSWORD: secret
+      MYSQL_DATABASE: benchmark
+    ports:
+      - "3306:3306"
+    volumes:
+      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-u", "root", "-psecret"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+  php:
+    image: bitnami/php-fpm:8.3
+    container_name: php-benchmark
+    volumes:
+      - ./src:/app
+      - ./results:/app/results
+    working_dir: /app
+    command: sleep infinity
+    depends_on:
+      mysql:
+        condition: service_healthy
+    build:
+      context: .
+      dockerfile: Dockerfile
+

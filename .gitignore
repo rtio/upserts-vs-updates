@@ -1,0 +1,46 @@
+# Docker
+.docker/
+docker-compose.override.yml
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+graph-env/
+venv/
+ENV/
+
+# Results and generated data
+results/
+*.png
+*.jpg
+*.jpeg
+*.gif
+*.csv
+*.log
+
+# IDE and editor files
+.idea/
+.vscode/
+*.swp
+*.swo
+.DS_Store
+Thumbs.db
+
+# PHP
+*.php~
+*.php.bak
+*.php.swp
+*.php.swo
+
+# Logs
+*.log
+logs/
+
+# System files
+.env
+.env.local
+*.log
+logs/ 
